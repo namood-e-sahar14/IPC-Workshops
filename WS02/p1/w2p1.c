@@ -13,29 +13,36 @@
 int main()
 {
     int cents, coins;
-    double dollars, Amount, value, remaining;
+    double toonies, // this will store the number of toonies in the amount
+        dollars, 
+        amount, // this
+        loonies, remaining,quarter;
 
-    scanf("%d", &cents);
-    scanf("%.2lf" & dollars);
-    printf("change Maker Machine");
-    printf("=====================");
-    scanf("%.2lf" & Amount);
-    printf("Enter dollars and cents amount to convert to coins: 9.92");
-    scanf("%.2lf" & remaining);
+    // Prompt user for the input
+    printf("Change Maker Machine \n");
+    printf("==================== \n");
+    printf("Enter dollars and cents amount to convert to coins: $");
+    scanf("%lf", &amount);
 
-    value = > 2;
-    coins = value / 2;
-    value = < 2 && value = >1;
-    coins = value / 1;
-    value = > 0.25;
-    coins = value / 0.25;
+    // Calculate Toonies by dividing to 2 and display to user
+    toonies = floor(amount / 2);
+    printf("\n\n$2.00 Toonies X %.0lf", toonies);
+    // Calculate remaining by subtracting the total amount of toonies from main amount
+    remaining = amount - (toonies * 2);
+    printf("(remaining: $=%.2lf) \n", remaining);
 
-    printf("coins=%d", coins);
-    scanf("%d", &coins);
+    loonies = floor(remaining / 1);
+    printf("$ 1.00 Loonie x =%.0lf ", loonies);
+    remaining = remaining - (loonies * 1);
+    printf("(remaining: $=%.2lf) \n", remaining);
+   
+    quarter = floor(remaining / 0.25);
+    printf("$ 0.25 quarter x =%.0lf ",quarter);
+    remaining = remaining - (quarter *0.25);
+    printf("(remaining: $=%.2lf) \n", remaining);
+    
+    printf("Machine Error! Thankyou for letting me Keep change = $ %.2lf \n", remaining);
 
-    remaining = value % Amount;
-    printf("remaining=%d\n", remaining);
-    scanf("%.2lf" & remaining);
-
+ 
     return 0;
 }
