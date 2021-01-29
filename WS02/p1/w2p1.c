@@ -12,9 +12,9 @@
 #include<math.h>
 int main()
 {
-    int cents, coins;
+    int cents, coins, tc, lc, qc;
     double toonies, // this will store the number of toonies in the amount
-        dollars, 
+         
         amount, // this
         loonies, remaining,quarter;
 
@@ -25,20 +25,25 @@ int main()
     scanf("%lf", &amount);
 
     // Calculate Toonies by dividing to 2 and display to user
-    toonies = floor(amount / 2);
-    printf("\n\n$2.00 Toonies X %.0lf", toonies);
+    toonies = (amount / 2);
+   tc = toonies - 0.5;
+ 
+    printf("\n\n$2.00 Toonies X =%d", tc);
     // Calculate remaining by subtracting the total amount of toonies from main amount
-    remaining = amount - (toonies * 2);
+    remaining = amount - (tc * 2);
     printf("(remaining: $=%.2lf) \n", remaining);
 
-    loonies = floor(remaining / 1);
-    printf("$ 1.00 Loonie x =%.0lf ", loonies);
-    remaining = remaining - (loonies * 1);
+   
+    loonies = (remaining  / 1);
+    lc = loonies - 0.5;
+    printf("$ 1.00 Loonie x =%d ", lc);
+    remaining =remaining - (lc * 1);
     printf("(remaining: $=%.2lf) \n", remaining);
    
-    quarter = floor(remaining / 0.25);
-    printf("$ 0.25 quarter x =%.0lf ",quarter);
-    remaining = remaining - (quarter *0.25);
+    quarter = (remaining / 0.25);
+    qc = quarter - 0.5;
+    printf("$ 0.25 quarter x =%d ",qc);
+    remaining = remaining- (qc *0.25);
     printf("(remaining: $=%.2lf) \n", remaining);
     
     printf("Machine Error! Thankyou for letting me Keep change = $ %.2lf \n", remaining);
