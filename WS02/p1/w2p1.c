@@ -42,7 +42,7 @@ int main()
     remaining = remaining - (quarter * 0.25);
     printf("(remaining: $%.2lf) \n", remaining);
     
-    printf("<nMachine Error! Thankyou for letting me keep $%.2lf! \n", remaining);
+    printf("\nMachine Error! Thankyou for letting me keep $%.2lf! \n", remaining);
 
  
     return 0;
