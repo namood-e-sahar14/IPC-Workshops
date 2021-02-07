@@ -25,29 +25,29 @@ int main()
 	double morning_summary = 0, evening_summary = 0;
 	double average_overall, average_morning, average_evening, summary_overall, numofaverage = 2;
 		
-	printf("General Well_being Log\n");
+	printf("General Well-being Log\n");
 	printf("======================\n");
 
 	char having_error = 'y';
 	while (having_error == 'y')
 	{
 		printf("Set the year and month for the well-being log (YYYY MM): ");
-		int inputs = scanf("%d %d", &log_year, &log_month);
+		 scanf("%d %d", &log_year, &log_month);
 
 		if (log_year < MIN_YEAR || log_year > MAX_YEAR)
 		{
-			printf("ERROR: the year must be between 2010 and 2021 inclusive\n");
+			printf("\tERROR: the year must be between 2010 and 2021 inclusive\n");
 		}
 		else if (log_month < JAN || log_month > DEC)
 		{
-			printf("ERROR: Jan.(1) - Dec.(12)\n");
+			printf("\tERROR: Jan.(1) - Dec.(12)\n");
 		}
 		else {
 			having_error = 'n';
 		}
 	}
 
-	char log_month_name[4] = "DEC";
+	char log_month_name[4];
 	switch (log_month)
 	{
 	case 1:
