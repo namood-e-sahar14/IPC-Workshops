@@ -34,14 +34,15 @@ int main()
 		printf("Set the year and month for the well-being log (YYYY MM): ");
 		 scanf("%d %d", &log_year, &log_month);
 
-		if (log_year < MIN_YEAR || log_year > MAX_YEAR)
-		{
-			printf("\tERROR: the year must be between 2010 and 2021 inclusive\n");
-		}
-		else if (log_month < JAN || log_month > DEC)
-		{
-			printf("\tERROR: Jan.(1) - Dec.(12)\n");
-		}
+		 if (log_year < MIN_YEAR || log_year > MAX_YEAR)
+		 {
+			 printf("   ERROR: The year must be between 2010 and 2021 inclusive\n");
+		 }
+		if (log_month < JAN || log_month > DEC)
+			{
+				printf("   ERROR: Jan.(1) - Dec.(12)\n");
+			}
+		 
 		else {
 			having_error = 'n';
 		}
@@ -89,30 +90,30 @@ int main()
 		break;
 	}
 
-	printf("\n*** Log date set! ***\n\n");
+	printf("\n*** Log date set! ***\n");
 
 	for (log_day = 1; log_day <= LOG_DAYS; log_day++)
 	{
-		printf("%d-%s-0%d", log_year, log_month_name, log_day);
+		printf("\n%d-%s-0%d\n", log_year, log_month_name, log_day);
 
 		valid_morning_ratings = 1;
 		while (valid_morning_ratings == 1)
 		{
-			printf("\n\tMorning rating (0.0-5.0): ");
+			printf("   Morning rating (0.0-5.0): ");
 			scanf("%lf", &morning_reading);
 			if (morning_reading < 0.0 || morning_reading > 5.0)
 			{
-				printf("\t\tERROR: Rating must be between 0.0 and 5.0 inclusive!\n");
+				printf("      ERROR: Rating must be between 0.0 and 5.0 inclusive!\n");
 			}
 			else {
 				valid_evening_ratings = 1;
 				while (valid_evening_ratings == 1)
 				{
-					printf("\tEvening rating (0.0-0.5): ");
+					printf("   Evening rating (0.0-0.5): ");
 					scanf("%lf", &evening_reading);
 					if (evening_reading < 0.0 || evening_reading > 5.0)
 					{
-						printf("\t\tERROR: Rating must be between 0.0 and 5.0 inclusive!\n");
+						printf("      ERROR: Rating must be between 0.0 and 5.0 inclusive!\n");
 					}
 					else {
 
