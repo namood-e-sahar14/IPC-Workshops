@@ -1,6 +1,6 @@
 /*
 	==================================================
-	Workshop #3 (Part-1):
+	Workshop #3 (Part-2):
 	==================================================
 	Name   : Namood-e-sehar
 	ID     :121979207
@@ -28,26 +28,30 @@ int main()
 	printf("General Well-being Log\n");
 	printf("======================\n");
 
-	char having_error = 'y';
-	while (having_error == 'y')
+	char execute = 'y';
+	while (execute == 'y')
 	{
 		printf("Set the year and month for the well-being log (YYYY MM): ");
-		 scanf("%d %d", &log_year, &log_month);
+		scanf("%d %d", &log_year, &log_month);
 
-		 if (log_year < MIN_YEAR || log_year > MAX_YEAR)
-		 {
-			 printf("   ERROR: The year must be between 2010 and 2021 inclusive\n");
-		 }
+		if (log_year < MIN_YEAR || log_year > MAX_YEAR)
+		{
+			printf("   ERROR: The year must be between 2010 and 2021 inclusive\n");
+		}
+
 		if (log_month < JAN || log_month > DEC)
-			{
-				printf("   ERROR: Jan.(1) - Dec.(12)\n");
-			}
-		 
-		else {
-			having_error = 'n';
+		{
+			printf("   ERROR: Jan.(1) - Dec.(12)\n");
+		}
+		
+		if (log_year >= MIN_YEAR && log_year <= MAX_YEAR && log_month >= JAN && log_month <= DEC)
+		{
+			execute = 'n';
 		}
 	}
+		
 
+	
 	char log_month_name[4];
 	switch (log_month)
 	{
@@ -80,6 +84,7 @@ int main()
 		break;
 	case 10:
 		strcpy(log_month_name, "OCT");
+		break;
 	case 11:
 		strcpy(log_month_name, "NOV");
 		break;
@@ -109,7 +114,7 @@ int main()
 				valid_evening_ratings = 1;
 				while (valid_evening_ratings == 1)
 				{
-					printf("   Evening rating (0.0-0.5): ");
+					printf("   Evening rating (0.0-5.0): ");
 					scanf("%lf", &evening_reading);
 					if (evening_reading < 0.0 || evening_reading > 5.0)
 					{
@@ -119,10 +124,10 @@ int main()
 
 						morning_summary = morning_summary + morning_reading;
 						evening_summary = evening_summary + evening_reading;
-						
+
 						valid_evening_ratings = 0;
 						valid_morning_ratings = 0;
-					
+
 					}
 				}
 			}
@@ -133,7 +138,7 @@ int main()
 
 	printf("\nSummary\n");
 	printf("=======\n");
-	printf("Morning total rating: %.3lf\n", morning_reading);
+	printf("Morning total rating: %.3lf\n", morning_summary);
 	printf("Evening total rating: %.3lf\n", evening_summary);
 	printf("----------------------------");
 
@@ -143,11 +148,11 @@ int main()
 	average_morning = morning_summary / LOG_DAYS;
 	average_evening = evening_summary / LOG_DAYS;
 
-	printf("\nAverage morning rating: %.1lf\n", average_morning);
-	printf("Average evening rating: %.1lf\n", average_evening);
-	printf("---------------------------\n");
-	average_overall = average_morning + average_evening /numofaverage;
-	printf("Average overall rating: %.1lf\n", average_overall);
+	printf("\nAverage morning rating:  %.1lf\n", average_morning);
+	printf("Average evening rating:  %.1lf\n", average_evening);
+	printf("----------------------------\n");
+	average_overall = (average_morning + average_evening) / numofaverage;
+	printf("Average overall rating:  %.1lf\n", average_overall);
 
 	return 0;
 

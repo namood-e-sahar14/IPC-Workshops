@@ -24,21 +24,28 @@ int main()
 	printf("General Well_being Log\n");
 	printf("======================\n");
 
-	char execute = 'y';
-	while (execute == 'y')
+	int execute = 1;
+	int execution_error;
+	while (execute == 1)
 	{
+		execution_error = 0;
 		printf("Set the year and month for the well-being log (YYYY MM): ");
 		int inputs = scanf("%d %d", &log_year, &log_month);
 
 		if (log_year < MIN_YEAR || log_year > MAX_YEAR)
 		{
-			printf("ERROR: the year must be between 2010 and 2021 inclusive\n");
-		} else if (log_month < JAN || log_month > DEC)
+			printf("ERROR: The year must be between 2010 and 2021 inclusive\n");
+			execution_error = 1;
+		}
+		
+		if (log_month < JAN || log_month > DEC)
 		{
 			printf("ERROR: Jan.(1) - Dec.(12)\n");
+			execution_error = 1;
 		}
-		else {
-			execute = 'n';
+		
+		if (execution_error == 0) {
+			execute = 0;
 		}
 	}
 
@@ -74,6 +81,7 @@ int main()
 			break;
 		case 10:
 			strcpy(log_month_name, "OCT");
+			break;
 		case 11:
 			strcpy(log_month_name, "NOV");
 			break;
