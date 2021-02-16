@@ -33,7 +33,7 @@ int main()
 
 	printf("+--------------------------+\n");
 	printf("+   Wish List Forecaster   |\n");
-	printf("+--------------------------+\n");
+	printf("+--------------------------+\n\n");
 
 	int go = 1;
 	while (go == 1)
@@ -43,11 +43,11 @@ int main()
 
 		if (monthly_income < min_income)
 		{
-			printf("ERROR: You must have a consistent monthly income of atleast $500.00\n\n");
+			printf("ERROR: You must have a consistent monthly income of at least $500.00\n\n");
 		}
 		if (monthly_income > max_income)
 		{
-			printf("ERROR: Liar! I'll believe you if you enter a value no more than $400,000.00\n\n");
+			printf("ERROR: Liar! I'll believe you if you enter a value no more than $400000.00\n\n");
 		}
 		if (monthly_income >= min_income && monthly_income <= max_income)
 		{
@@ -72,18 +72,18 @@ int main()
 	int i;
 	for (i = 0; i < items; i++)
 	{
-		printf("\nItem-%d Details: \n", (i + 1));
+		printf("\nItem-%d Details:\n", (i + 1));
 
 		// while loop for cost
 
 		go = 1;
 		while (go == 1)
 		{
-			printf("Item cost: $");
+			printf("   Item cost: $");
 			scanf(" %lf", &item_cost[i]);
 			if (item_cost[i] < item_min_cost)
 			{
-				printf("ERROR: Minimum cost should be $100.00\n");
+				printf("      ERROR: Cost must be at least $100.00\n");
 			}
 			if (item_cost[i] >= item_min_cost)
 			{
@@ -95,12 +95,12 @@ int main()
 		go = 1;
 		while (go == 1)
 		{
-			printf("How important is it to you? [1=must have, 2=important, 3=want]: ");
+			printf("   How important is it to you? [1=must have, 2=important, 3=want]: ");
 			scanf(" %d", &item_prio[i]);
 
 			if (item_prio[i] < item_min_prio || item_prio[i] > item_max_prio)
 			{
-				printf("ERROR: Value must be between 1 and 3\n");
+				printf("      ERROR: Value must be between 1 and 3\n");
 			}
 
 			if (item_prio[i] >= item_min_prio && item_prio[i] <= item_max_prio)
@@ -113,11 +113,11 @@ int main()
 		go = 1;
 		while (go == 1)
 		{
-			printf("Does this item have financing options? [y/n]: ");
+			printf("   Does this item have financing options? [y/n]: ");
 			scanf(" %c", &item_finance[i]);
 			if (item_finance[i] != finance_yes && item_finance[i] != finance_no)
 			{
-				printf("ERROR: Must be a lower case 'y' or 'n'\n");
+				printf("      ERROR: Must be a lowercase 'y' or 'n'\n");
 			}
 
 			if (item_finance[i] == finance_yes || item_finance[i] == finance_no)
@@ -128,7 +128,7 @@ int main()
 
 	}
 	// now print the result of the item
-	printf("\nItems Priority Financed        Cost\n");
+	printf("\nItem Priority Financed        Cost\n");
 	printf("---- -------- -------- -----------\n");
 	for (i = 0; i < items; i++)
 	{
@@ -140,11 +140,8 @@ int main()
 	printf("                      $%11.2lf\n\n", item_cost_summary);
 
 	// Part 2 starts here
-	const min_selection = 0,
-		const max_selection = 2;
-	const min_prio_filter = 1;
-	const max_prio_filter = 3;
-	int isFinancingAvailbale = 0;
+	const int min_selection = 0;
+	const int max_selection = 2;
 	int selection, prio_filter, prio_filter_finance_note;
 	int tot_months, forecast_years;
 	double forecast_months, prio_filter_cost_summary;
@@ -157,7 +154,7 @@ int main()
 		prio_filter_finance_note = 0;
 
 		printf("How do you want to forecast your wish list?\n");
-		printf(" 1. All items(no filters)\n");
+		printf(" 1. All items (no filter)\n");
 		printf(" 2. By priority\n");
 		printf(" 0. Quit/Exit\n");
 		printf("Selection: ");
@@ -169,13 +166,15 @@ int main()
 		}
 		if (selection == 1)
 		{
-			printf("===================================================\n\n");
-			tot_months = ceil(item_cost_summary / monthly_income);
-			forecast_years = floor(tot_months / 12);
+			printf("\n====================================================\n");
+			//tot_months = ceil(item_cost_summary / monthly_income);
+			//tot_months = (item_cost_summary / monthly_income) + (((int)item_cost_summary % (int)monthly_income) != 0);
+			tot_months = (item_cost_summary + monthly_income - 1) / monthly_income;
+			forecast_years = (int)(tot_months / 12);
 			forecast_months = tot_months % 12;
 
-			printf("Filter: All items\n");
-			printf("Amount: $%.2lf\n", item_cost_summary);
+			printf("Filter:   All items\n");
+			printf("Amount:   $%.2lf\n", item_cost_summary);
 			printf("Forecast: %d years, ", forecast_years);
 			printf("%.0lf months\n", forecast_months);
 
@@ -184,29 +183,27 @@ int main()
 			{
 				if (item_finance[i] == 'y')
 				{
-					printf("Note: Financing options are available on some items.\n");
+					printf("NOTE: Financing options are available on some items.\n");
 					printf("      You can likely reduce the estimated months.\n");
-					printf("====================================================\n\n");
+			printf("====================================================\n\n");
 					break;
 				}
 			}
 		}
 		if (selection == 2)
 		{
-
 			// while loop for priority
 			go = 1;
 			while (go == 1)
 			{
-				printf("\nWhat priority do you want to filter by? [1-3]:");
+				printf("\nWhat priority do you want to filter by? [1-3]: ");
 				scanf(" %d", &prio_filter);
 
-				if (prio_filter < min_prio_filter || prio_filter > max_prio_filter)
+				if (prio_filter < item_min_prio || prio_filter > item_max_prio)
 				{
 					printf("ERROR: Value must be between 1 and 3\n");
 				}
-				if (prio_filter >= min_prio_filter && prio_filter <= max_prio_filter)
-
+				if (prio_filter >= item_min_prio && prio_filter <= item_max_prio)
 				{
 
 					// filter cost summary for given priority
@@ -220,39 +217,39 @@ int main()
 							{
 								prio_filter_finance_note = 1;
 							}
-
-						}break;
+						}
 					}
 
-
-					printf("\n===================================================\n");
-					tot_months = ceil(prio_filter_cost_summary / monthly_income);
-					forecast_years = floor(tot_months / 12);
+					printf("\n====================================================\n");
+					
+					tot_months = (prio_filter_cost_summary + monthly_income - 1) / monthly_income;
+					
+					forecast_years = (int)(tot_months / 12);
 					forecast_months = tot_months % 12;
 
-					printf("Filter: by priority (%d)\n", prio_filter);
-					printf("Amount: $%.2lf\n", prio_filter_cost_summary);
+					printf("Filter:   by priority (%d)\n", prio_filter);
+					printf("Amount:   $%.2lf\n", prio_filter_cost_summary);
 					printf("Forecast: %d years, ", forecast_years);
 					printf("%.0lf months\n", forecast_months);
 
-					for (i = 0; i < items; i++)
+					if (prio_filter_finance_note == 1)
 					{
-						if (item_finance[i] == 'y')
-						{
-							printf("Note: Financing options are available on some items.\n");
-							printf("      You can likely reduce the estimated months.\n");
-							printf("=====================================================\n\n");
-							break;
-						}
+						printf("NOTE: Financing options are available on some items.\n");
+						printf("      You can likely reduce the estimated months.\n");
+					printf("====================================================\n\n");
 					}
-				}go = 0;
+					if (prio_filter_finance_note != 1)
+					{
+					printf("====================================================\n\n");
+					}break;
+				}
 			}
 		}
 		if (selection == 0)
-			{
-				printf("\nBest of luck in all your future endeavours!\n");
-				prog = 0;
-			}
+		{
+			printf("\nBest of luck in all your future endeavours!\n");
+			prog = 0;
+		}
 	}
 
 	return 0;
