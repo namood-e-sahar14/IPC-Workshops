@@ -22,7 +22,7 @@ struct PlayerInfo
 	char char_symbol;
 	int num_of_lives;
 	int num_of_treasures;
-    int	history;
+    int	history[path_length_max];
 };
 
 struct GameInfo
@@ -34,8 +34,8 @@ struct GameInfo
 
 };
 
-printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info);
-printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info);
+void printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info, int symbol_position);
+void printPlayerStatus(struct PlayerInfo p_info, struct GameInfo g_info);
 
 int main()
 {
@@ -153,24 +153,19 @@ int main()
 	}
 	printf("\n\n====================================\n");
 	printf("~ Get ready to play TREASURE HUNT! ~\n");
-	printf("====================================");
+	printf("====================================\n\n");
 
-	/ part 2
+	// part 2
 
+	//initialize values
 
-
-
-		//initialize values
-
-
-
-		for (i = 0; i < game_info.path_length; i++)
-		{
-			player_info.history[i] = 0;
-		}
+	for (i = 0; i < game_info.path_length; i++)
+	{
+		player_info.history[i] = 0;
+	}
 	player_info.num_of_treasures = 0;
 
-	printGameStatus(player_info, game_info);
+	printGameStatus(player_info, game_info, 0);
 
 	printPlayerStatus(player_info, game_info);
 
@@ -209,7 +204,7 @@ int main()
 
 			printf("==============> Dope! You've been here before!\n");
 
-			printGameStatus(player_info, game_info);
+			printGameStatus(player_info, game_info, move);
 
 			printPlayerStatus(player_info, game_info);
 
@@ -248,7 +243,7 @@ int main()
 			printf("No more MOVES remaining!\n");
 		}
 
-		printGameStatus(player_info, game_info);
+		printGameStatus(player_info, game_info, move);
 
 		printPlayerStatus(player_info, game_info);
 
@@ -261,6 +256,7 @@ int main()
 
 	return 0;
 }
+
 // ==============================================================
 // print player status
 void printPlayerStatus(struct PlayerInfo p_info, struct GameInfo g_info)
@@ -273,11 +269,22 @@ void printPlayerStatus(struct PlayerInfo p_info, struct GameInfo g_info)
 }
 
 // print game status
-void printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info)
+void printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info, int symbol_position)
 {
-	printf("%c \n", p_info.char_symbol);
 
 	int found, position, j;
+
+	for (j = 1; j <= symbol_position; j++)
+	{
+		if (j == symbol_position) {
+			printf("%c \n", p_info.char_symbol);
+		}
+		else {
+			printf(" ");
+		}
+	}
+
+	printf("  ");
 	for (position = 0; position < g_info.path_length; position++)
 	{
 		found = 0;
@@ -309,6 +316,7 @@ void printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info)
 	}
 	printf("\n");
 
+	printf("  ");
 	for (position = 1; position <= g_info.path_length; position++)
 	{
 		if (position % 10 == 0) {
@@ -319,6 +327,8 @@ void printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info)
 		}
 	}
 	printf("\n");
+
+	printf("  ");
 
 	for (position = 1; position <= g_info.path_length; position++)
 	{
