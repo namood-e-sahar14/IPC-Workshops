@@ -1,8 +1,9 @@
+
 /*
 	==================================================
-	Workshop #5 (Part-2):
+	Workshop #5 (Part-1):
 	==================================================
-	Name   : Namood-e-sehar	
+	Name   : Namood-e-sehar
 	ID     :121979207
 	Email  :Namood-e-sahar
 	Section:NFF
@@ -21,7 +22,7 @@ struct PlayerInfo
 	char char_symbol;
 	int num_of_lives;
 	int num_of_treasures;
-	int history[path_length_max];
+    int	history;
 };
 
 struct GameInfo
@@ -30,10 +31,11 @@ struct GameInfo
 	int path_length;
 	int bombs[path_length_max];
 	int treasures[path_length_max];
+
 };
 
-void printPlayerStatus(struct PlayerInfo p_info, struct GameInfo g_info);
-void printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info);
+printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info);
+printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info);
 
 int main()
 {
@@ -152,15 +154,20 @@ int main()
 	printf("\n\n====================================\n");
 	printf("~ Get ready to play TREASURE HUNT! ~\n");
 	printf("====================================");
-	printf("\n\n");
+
+	/ part 2
 
 
-	//part 2
-	//initialize values
-	for (i = 0; i < game_info.path_length; i++)
-	{
-		player_info.history[i] = 0;
-	}
+
+
+		//initialize values
+
+
+
+		for (i = 0; i < game_info.path_length; i++)
+		{
+			player_info.history[i] = 0;
+		}
 	player_info.num_of_treasures = 0;
 
 	printGameStatus(player_info, game_info);
@@ -180,7 +187,7 @@ int main()
 			if (move < 1 || move > game_info.path_length) {
 				printf("Out of Range!!!\n");
 			}
-			else if(move >= 1 && move <= game_info.path_length)
+			else if (move >= 1 && move <= game_info.path_length)
 			{
 				move_go = 0;
 			}
@@ -195,21 +202,21 @@ int main()
 			}
 		}
 
-		// position for th move
+		// position for the move
 		move_position = move - 1;
 
 		if (found == 1) {
 
 			printf("==============> Dope! You've been here before!\n");
 
-			  printGameStatus(player_info, game_info);
+			printGameStatus(player_info, game_info);
 
 			printPlayerStatus(player_info, game_info);
 
 			continue;
 
 		}
-		
+
 		if (game_info.bombs[move_position] == 1 && game_info.treasures[move_position] == 1) {
 			player_info.num_of_lives--;
 			player_info.num_of_treasures++;
@@ -224,7 +231,7 @@ int main()
 			player_info.num_of_treasures++;
 			printf("\n===============> [$] $$$ Found Treasure! $$$ [$]\n\n");
 		}
-		else if(game_info.treasures[move_position] == 0 && game_info.bombs[move_position] == 0) {
+		else if (game_info.treasures[move_position] == 0 && game_info.bombs[move_position] == 0) {
 			printf("\n==============> [.] ... Nothing found here... [.]\n\n");
 		}
 
@@ -252,18 +259,19 @@ int main()
 	printf("##################");
 	printf("\n\n You should play again and try to beat your score!!\n\n");
 
+	return 0;
 }
-
 // ==============================================================
 // print player status
-void printPlayerStatus(struct PlayerInfo p_info, struct GameInfo g_info) {
+void printPlayerStatus(struct PlayerInfo p_info, struct GameInfo g_info)
+{
 
 	printf("+----------------------------------------------------+\n");
 	printf("  Lives: %d  |  Treasures: %d  |  Moves Remaining: %d", p_info.num_of_lives, p_info.num_of_treasures, g_info.num_of_moves);
 	printf("\n+----------------------------------------------------+\n");
 
 }
-	
+
 // print game status
 void printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info)
 {
@@ -319,6 +327,3 @@ void printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info)
 	printf("\n");
 
 }
-	
-
-	
