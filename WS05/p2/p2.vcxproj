@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="w5p2.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="myfunctions.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{C6D69849-A877-476C-B338-73420103CB30}</ProjectGuid>

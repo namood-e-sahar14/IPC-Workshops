@@ -1,7 +1,7 @@
 
 /*
 	==================================================
-	Workshop #5 (Part-1):
+	Workshop #5 (Part-2):
 	==================================================
 	Name   : Namood-e-sehar
 	ID     :121979207
@@ -22,7 +22,7 @@ struct PlayerInfo
 	char char_symbol;
 	int num_of_lives;
 	int num_of_treasures;
-    int	history[path_length_max];
+	int	history[path_length_max];
 };
 
 struct GameInfo
@@ -277,7 +277,7 @@ void printGameStatus(struct PlayerInfo p_info, struct GameInfo g_info, int symbo
 	for (j = 1; j <= symbol_position; j++)
 	{
 		if (j == symbol_position) {
-			printf("%c \n", p_info.char_symbol);
+			printf("  %c \n", p_info.char_symbol);
 		}
 		else {
 			printf(" ");
