@@ -203,21 +203,7 @@ struct ReportData calculateReportData(struct CatFoodInfo cat_food_info)
 	return rpData;
 }
 
-/*struct ReportDataNew calculateReportDataNew(struct CatFoodInfo cat_food_info)
-{
-	struct ReportDataNew rpData;
 
-	rpData.food_info = cat_food_info;
-	
-	convertLbsKg(&rpData.food_info.WEIGHT, &rpData.wt_kg);
-	convertLbsG(&rpData.food_info.WEIGHT, &rpData.wt_grams);
-
-	calculateServings(SERVING, rpData.wt_grams, &rpData.serving);
-	calculateCostPerServing(rpData.food_info.PRICE,rpData.serving, &rpData.serving_cost);
-	calculateCostPerCal(rpData.food_info.PRICE, rpData.food_info.CALORIES, &rpData.calorie_cost);
-	
-	return rpData;
-}*/
 // 15. Display the formatted table header for the analysis results
 
 
@@ -242,17 +228,6 @@ void displayReportData(struct ReportData rpData, int cheapest)
 	}
 }
 
-/*void displayReportDataNew(struct ReportDataNew rpData, int cheapest)
-{
-	printf("%07d %10.2lf %10.1lf %10.4lf %9d %8d %8.1lf %7.2lf %7.5lf", rpData.food_info.SKU, rpData.food_info.PRICE, rpData.food_info.WEIGHT, rpData.wt_kg, rpData.wt_grams, rpData.food_info.CALORIES, rpData.serving, rpData.serving_cost, rpData.calorie_cost);
-
-	if (cheapest == 1) {
-		printf(" ***\n");
-	}
-	else {
-		printf("\n");
-	}
-}*/
 
 // 17. Display the findings (cheapest)
 
