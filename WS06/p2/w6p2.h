@@ -59,12 +59,12 @@ void displayCatFoodHeader();
 void displayCatFoodData(int SKU, double PRICE, double WEIGHT, int CALORIES);
 void start();
 
-double convertLbsKg(double* pounds, double* kgs);// correct number of parameters
-int convertLbsG(double* pounds, int* grams);// correct number of parameters
-void convertLbs(double* pounds, double* kgs, int* grams);// correct number of parameters
-double calculateServings(int serving_size, int product_size, double* servings);// correct number of parameters
-double calculateCostPerServing(double price, double servings, double* cost_per_serving);// correct number of parameters
-double calculateCostPerCal(double price, double calories, double*  cost_per_cal);// correct number of parameters
+double convertLbsKg(double* pounds, double* kgs);
+int convertLbsG(double* pounds, int* grams);
+void convertLbs(double* pounds, double* kgs, int* grams);
+double calculateServings(int serving_size, int product_size, double* servings);
+double calculateCostPerServing(double price, double servings, double* cost_per_serving);
+double calculateCostPerCal(double price, double calories, double*  cost_per_cal);
 struct ReportData calculateReportData(struct CatFoodInfo cat_food_info);
 void displayReportHeader(void);
 void displayReportData(struct ReportData rpData, int cheapest);
