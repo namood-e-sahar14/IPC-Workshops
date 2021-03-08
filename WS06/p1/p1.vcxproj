@@ -20,10 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main1.c" />
-    <ClCompile Include="W6p1.c" />
+    <ClCompile Include="w6p1.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="W6p1.h" />
+    <ClInclude Include="w6p1.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

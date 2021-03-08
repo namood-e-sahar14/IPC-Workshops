@@ -24,12 +24,13 @@ int getIntPositive(int* number)
 {
 	int intA, num;
 	num = 1;
+	
 	while (num == 1)
 	{
 		scanf("%d", &intA);
 		if (intA < 1)
 		{
-			printf("ERROR: Enter a positive value:");
+			printf("ERROR: Enter a positive value: ");
 		} else {
 			num = 0;
 		}
@@ -51,7 +52,7 @@ double getDoublePositive(double* number)
 		scanf("%lf", &dblA);
 		if (dblA <= 0.0)
 		{
-			printf("ERROR: Enter a positive value:");
+			printf("ERROR: Enter a positive value: ");
 		}
 		else {
 			num = 0;
@@ -73,7 +74,7 @@ void openingMessage()
 	//printf("======================\n");
 	printf("Cat Food Cost Analysis\n");
 	printf("======================\n\n");
-	printf("Enter the details for %d dry foood bags of product data for analysis.\nNOTE: A 'serving' is %dg \n", num_of_items, num_of_grams);
+	printf("Enter the details for %d dry food bags of product data for analysis.\nNOTE: A 'serving' is %dg\n", num_of_items, num_of_grams);
 }
 
 // 4. Get user input for the details of cat food product
@@ -82,7 +83,7 @@ struct CatFoodInfo getCatFoodInfo(int productIndex)
 	struct CatFoodInfo info;
 
 	printf("\nCat Food Product #%d\n", productIndex+1);
-	printf("-------------------\n");
+	printf("--------------------\n");
 	printf("SKU           : ");
 	info.SKU = getIntPositive(&info.SKU);
 	printf("PRICE         : $");
@@ -110,20 +111,21 @@ void displayCatFoodData(int sku, double price, double weight, int calories)
 }
 
 // 7. Logic entry point
- #pragma once
-
 void start()
 {
 	struct CatFoodInfo items[num_of_items];
-void openingMessage();
-	for (int i = 0; i < num_of_items; i++)
+	
+	openingMessage();
+	
+	int i = 0;
+	for (i = 0; i < num_of_items; i++)
 	{
 		items[i] = getCatFoodInfo(i);
 	}
 
-void displayCatFoodHeader();
+	displayCatFoodHeader();
 	
-	for (int i = 0; i < num_of_items; i++)
+	for (i = 0; i < num_of_items; i++)
 	{
 		displayCatFoodData(items[i].SKU, items[i].PRICE, items[i].WEIGHT, items[i].CALORIES);
 	}
